@@ -2,6 +2,17 @@ class User:
     # Scoped to the class, not the object
     active_users = 0
 
+    @classmethod
+    def display_active_users(cls):
+        # class methods do not depend on and do not have access to any
+        # instance-specific info
+        return f"There are currently {cls.active_users} active users"
+
+    @classmethod
+    def from_string(cls, data_str):
+        first, last, age = data_str.split(",")
+        return cls(first, last, age)
+
     def __init__(self, first, last, age):
         self.first = first
         self.last = last
