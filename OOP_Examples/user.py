@@ -11,7 +11,7 @@ class User:
     @classmethod
     def from_string(cls, data_str):
         first, last, age = data_str.split(",")
-        return cls(first, last, age)
+        return cls(first, last, int(age))
 
     def __init__(self, first, last, age):
         self.first = first
@@ -20,6 +20,11 @@ class User:
         # Whenever the value is changed in one object,
         # it's changed in them all.
         User.active_users += 1
+
+    def __repr__(self):
+        # Instead of printing <__main__.User object at xxxxxxxx> when printing
+        # and object, get a  more useful description.
+        return f"{self.first} is {self.age} years old."
 
     def logout(self):
         User.active_users -= 1
