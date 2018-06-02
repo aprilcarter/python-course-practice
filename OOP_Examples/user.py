@@ -45,3 +45,19 @@ class User:
     def birthday(self):
         self.age += 1
         return f"Happy {self.age}th birthday, {self.first}"
+
+
+class Moderator(User):
+    total_mods = 0
+
+    def __init__(self, first, last, age, community):
+        super().__init__(first, last, age)
+        self.community = community
+        Moderator.total_mods += 1
+
+    @classmethod
+    def display_active_mods(cls):
+        return f"There are currently {cls.total_mods} active mods"
+
+    def remove_post(self):
+        return f"{self.full_name()} removed a post from the {self.community} community"
