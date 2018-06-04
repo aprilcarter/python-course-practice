@@ -27,3 +27,19 @@ class Human:
         if isinstance(other, int):
             return[copy(self) for i in range(other)]
         raise TypeError("Unable to multiply a Human and a non-integer")
+
+
+class GrumpyDictionary(dict):
+    def __repr__(self):
+        print("None of your businss...")
+        # same as using a parent's __init__. If you override any methods
+        # in order to also run the parent's method, call it manually.
+        return super.__repr__()
+
+    def __missing__(self, key):
+        print(f"You want {key}? It's not here, so go away.")
+
+    def __setitem__(self, key, value):
+        print("Why would I let someone like you change the dictionary?")
+        print("Fine, whatever.")
+        super().__setitem__(key, value)
