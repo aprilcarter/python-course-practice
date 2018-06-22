@@ -22,7 +22,7 @@ def sum_nums():
 print(sum_nums())
 
 
-# Type enforcement decorator
+# Type enforcement decorator.
 def ensure_no_kwargs(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
